@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
 
 function NavBar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,9 +23,9 @@ function NavBar() {
         <div className="flex justify-between items-center">
           <Link 
             to="/" 
-            className="text-3xl font-bold bg-gradient-to-r from-bright-red to-off-white bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+            className="text-3xl font-bold text-bright-red hover:text-bright-red transition-transform duration-300"
           >
-            Artist Name
+            The Weeknd
           </Link>
           
           <div className="flex items-center gap-8">
@@ -43,9 +45,14 @@ function NavBar() {
             </Link>
             <Link 
               to="/cart" 
-              className="px-6 py-2 rounded-full bg-bright-red text-off-white hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105"
+              className="px-3 py-1 rounded-full bg-bright-red text-off-white hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 relative"
             >
               Cart
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-white text-soft-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  {totalItems}
+                </span>
+              )}
             </Link>
           </div>
         </div>

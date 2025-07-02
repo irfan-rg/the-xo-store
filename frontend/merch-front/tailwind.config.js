@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'soft-black': '#121212',
+        'element':'#282930',
         'off-white': '#E0E0E0',
         'bright-red': '#EF4444',
       },
