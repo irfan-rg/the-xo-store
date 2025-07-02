@@ -2,10 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import custom fonts from Google Fonts */
+/* Removed unnecessary imports since we're using system fonts */
+
+/* Custom animation for notification */
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 3s ease-in-out forwards;
+}
+
+/* Custom animation for modal */
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-in-out forwards;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+    font-family: Impact, system-ui, sans-serif;
+    font-weight: normal; /* Attempt to reduce weight, though Impact is inherently bold */
+    letter-spacing: 0.03em; /* Slight letter spacing to reduce density */
+
+  /* font-family: Arial, system-ui, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 400; */
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -13,6 +43,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 a {

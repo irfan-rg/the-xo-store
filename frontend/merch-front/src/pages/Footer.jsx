@@ -1,15 +1,8 @@
-import { Link } from 'react-router-dom';
-
 function Footer() {
   return (
     <footer className="bg-soft-black border-t border-bright-red/20">
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col items-center space-y-6">
-          {/* Brand */}
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-bright-red to-off-white bg-clip-text text-transparent">
-            Artist Name
-          </Link>
-
           {/* Social Links */}
           <div className="flex space-x-6">
             <a 
