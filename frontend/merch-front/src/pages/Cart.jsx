@@ -61,14 +61,14 @@ const Cart = () => {
                   <div className="flex items-center mt-2">
                     <button 
                       onClick={() => updateQuantity(item._id, Math.max(1, item.quantity - 1))}
-                      className="bg-gray-700 text-off-white w-8 h-8 flex items-center justify-center rounded"
+                      className="bg-gray-700 text-off-white w-8 h-8 flex items-center justify-center rounded hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0"
                     >
                       -
                     </button>
                     <span className="text-off-white mx-2">{item.quantity}</span>
                     <button 
                       onClick={() => updateQuantity(item._id, item.quantity + 1)}
-                      className="bg-gray-700 text-off-white w-8 h-8 flex items-center justify-center rounded"
+                      className="bg-gray-700 text-off-white w-8 h-8 flex items-center justify-center rounded hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0"
                     >
                       +
                     </button>
@@ -76,7 +76,7 @@ const Cart = () => {
                 </div>
                 <button 
                   onClick={() => removeFromCart(item._id)}
-                  className="ml-auto text-bright-red hover:text-red-400 transition-colors"
+                  className="ml-auto text-bright-red hover:text-red-400 transition-colors hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0"
                 >
                   Remove
                 </button>
@@ -97,7 +97,7 @@ const Cart = () => {
               <span className="text-off-white">Total</span>
               <span className="text-bright-red">${(parseFloat(totalPrice) + 5).toFixed(2)}</span>
             </div>
-            <button className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6">
+            <button className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0">
               Proceed to Checkout
             </button>
           </div>
@@ -107,4 +107,4 @@ const Cart = () => {
   );
 };
 
-export default Cart; 
+export default Cart;

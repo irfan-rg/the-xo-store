@@ -165,7 +165,7 @@ function Products() {
                         e.stopPropagation();
                         addToCart(product);
                       }}
-                      className="mt-3 mx-auto bg-bright-red text-off-white p-2 rounded-half hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+                      className="mt-3 mx-auto bg-bright-red text-off-white p-2 rounded-half hover:bg-off-white hover:text-soft-black transition-all duration-0 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
                     >
                       <svg
                         className="w-5 h-5"
@@ -276,13 +276,13 @@ function Products() {
                       addToCart(selectedProduct);
                       closeModal();
                     }}
-                    className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg flex-1 focus:outline-none"
+                    className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-0 transform hover:scale-105 shadow-lg flex-1 hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
                   >
                     Add to Cart
                   </button>
                   <button
                     onClick={closeModal}
-                    className="bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-300 shadow-lg focus:outline-none"
+                    className="bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-0 shadow-lg hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
                   >
                     Close
                   </button>

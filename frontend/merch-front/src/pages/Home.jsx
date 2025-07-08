@@ -1,36 +1,55 @@
 import { Link } from "react-router-dom"
+import { useState, useRef } from "react"
 
 const Home = () => {
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef(null)
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted)
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted
+    }
+  }
+
   return (
     <div className="bg-soft-black text-off-white min-h-screen">
       {/* Hero Section */}
       <section className="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat overflow-hidden"
           style={{
-            backgroundImage: `url(https://scontent.fblr11-1.fna.fbcdn.net/v/t39.30808-6/478835190_1185266172969782_5835065933376042284_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=ItO_dP3VcI0Q7kNvwE5Gvsk&_nc_oc=Adl1tN6zt_DEsur2cGrbNuSwNMnQ__7Smi3OCcmv2cDrYm8o5zniA85LeBUVdAMLKfw&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&_nc_gid=zwYKTdDIaemw_Faw_H32Qg&oh=00_AfORz2GSYEAZQpJor4qOLHlGmv50TEwo8r58ogR9Am6oQg&oe=686B2C08)`,
+            backgroundImage: `url(https://cdn.pixabay.com/video/2021/04/01/69645-531604963_large.mp4)`,
           }}
-        ></div>
+        >
+          <video autoPlay loop muted={isMuted} className="w-full h-full object-cover" ref={videoRef}>
+            <source src="https://res.cloudinary.com/deqe0oqer/video/upload/v1751905102/The_Weeknd_Tour_Intro_ozxn1u.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         
         {/* Dark overlay for dimming */}
         <div className="absolute inset-0 bg-soft-black opacity-60"></div>
 
-        <div className="relative z-10">
-          <h1 className="text-6xl sm:text-9xl md:text-[10rem] font-bold uppercase tracking-widest mb-6 bg-gradient-to-r from-red-600 via-gray-300 to-teal-500 bg-clip-text text-transparent">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          <h1 className="text-6xl sm:text-9xl md:text-[10rem] font-bold uppercase tracking-widest bg-gradient-to-r from-red-600 via-gray-300 to-teal-500 bg-clip-text text-transparent whitespace-nowrap">
             The Weeknd
           </h1>
-          <p className="text-xl sm:text-2xl max-w-lg mt-24 mb-8 font-light mx-auto">Dive into the sound. Grab exclusive merch now.</p>
+        </div>
+
+        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10 w-full text-center px-4">
+          <p className="text-xl sm:text-2xl max-w-lg mb-8 font-light mx-auto">Dive into the sound. Grab exclusive merch now.</p>
           <Link
             to="/products"
-            className="backdrop-blur-[1px] bg-white/5 text-off-white px-5 py-2 rounded-full font-semibold shadow-lg border border-white/5"
+            className="backdrop-blur-[1px] bg-white/10 text-off-white px-5 py-2 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
           >
             Shop Here
           </Link>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <svg
             className="w-8 h-8 text-bright-red"
             fill="none"
@@ -45,6 +64,21 @@ const Home = () => {
               d="M19 9l-7 7-7-7"
             ></path>
           </svg>
+        </div>
+
+        {/* Mute Button */}
+        <div className="absolute bottom-8 right-8 z-20">
+          <button 
+            onClick={toggleMute} 
+            className="backdrop-blur-[1px] bg-white/10 text-off-white p-2 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? (
+              <span className="px-2">Unmute</span>
+            ) : (
+              <span className="px-2">Mute</span>
+            )}
+          </button>
         </div>
       </section>
 
