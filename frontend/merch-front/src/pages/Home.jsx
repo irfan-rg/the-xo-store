@@ -16,15 +16,12 @@ const Home = () => {
     <div className="bg-soft-black text-off-white min-h-screen">
       {/* Hero Section */}
       <section className="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
-        {/* Background Image */}
+        {/* Background Video */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat overflow-hidden"
-          style={{
-            backgroundImage: `url(https://cdn.pixabay.com/video/2021/04/01/69645-531604963_large.mp4)`,
-          }}
         >
           <video autoPlay loop muted={isMuted} className="w-full h-full object-cover" ref={videoRef}>
-            <source src="https://res.cloudinary.com/deqe0oqer/video/upload/v1751905102/The_Weeknd_Tour_Intro_ozxn1u.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/deqe0oqer/video/upload/v1751905102/The_Weeknd_Tour_Intro.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
