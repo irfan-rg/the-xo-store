@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
+import { LineSpinner } from 'ldrs/react';
+import 'ldrs/react/LineSpinner.css';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -11,6 +13,7 @@ function Products() {
   const [sortBy, setSortBy] = useState('default');
   const { addToCart, notification } = useCart();
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [addingToCart, setAddingToCart] = useState(null); // Track which product is being added to cart
 
   useEffect(() => {
     fetchProducts();
@@ -49,10 +52,25 @@ function Products() {
     setSelectedProduct(null);
   };
 
+  const handleAddToCart = (product) => {
+    setAddingToCart(product._id);
+    setTimeout(() => {
+      addToCart(product);
+      setAddingToCart(null);
+    }, 500); // Simulate a brief delay for loader visibility
+  };
+
   if (loading) {
     return (
-      <div className="bg-soft-black min-h-screen p-8 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-bright-red"></div>
+      <div className="bg-soft-black min-h-screen p-8 flex flex-col items-center justify-center">
+        <LineSpinner
+          size="40"
+          stroke="3"
+          speed="1"
+          color="#FF2E2E" // Matching the bright-red color from your theme
+          className="mb-4"
+        />
+        <p className="text-off-white text-lg">Loading products...</p>
       </div>
     );
   }
@@ -157,30 +175,41 @@ function Products() {
                 <div className="p-6">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-xl font-semibold text-off-white">{product.name}</h3>
-                    <span className="px-2 text-2xl font-bold text-bright-red">${product.price}</span>
+                    <span className="text-2xl font-bold text-bright-red">${product.price}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
-                        addToCart(product);
+                        handleAddToCart(product);
                       }}
-                      className="mt-3 mx-auto bg-bright-red text-off-white p-2 rounded-half hover:bg-off-white hover:text-soft-black transition-all duration-0 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
+                      disabled={addingToCart === product._id}
+                      className="mt-3 mx-auto bg-bright-red text-off-white p-2 rounded-half hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
                     >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      {addingToCart === product._id ? (
+                        <LineSpinner
+                          size="20"
+                          stroke="2"
+                          speed="1"
+                          color="#FFFFFF" // White to match button text
+                          className="mr-2"
                         />
-                      </svg>
-                      <span>Add to Cart</span>
+                      ) : (
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                          />
+                        </svg>
+                      )}
+                      <span>{addingToCart === product._id ? 'ㅤAdding...' : 'Add to Cart'}</span>
                     </button>
                   </div>
                 </div>
@@ -273,16 +302,30 @@ function Products() {
                 <div className="flex gap-4 mt-6">
                   <button
                     onClick={() => {
-                      addToCart(selectedProduct);
-                      closeModal();
+                      handleAddToCart(selectedProduct);
+                      // Removed closeModal() to keep the modal open after adding to cart
                     }}
-                    className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-0 transform hover:scale-105 shadow-lg flex-1 hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
+                    disabled={addingToCart === selectedProduct._id}
+                    className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg flex-1"
                   >
-                    Add to Cart
+                    {addingToCart === selectedProduct._id ? (
+                      <div className="flex items-center justify-center">
+                        <LineSpinner
+                          size="20"
+                          stroke="2"
+                          speed="1"
+                          color="#FFFFFF"
+                          className="mr-2"
+                        />
+                        <span>ㅤAdding...</span>
+                      </div>
+                    ) : (
+                      <span>Add to Cart</span>
+                    )}
                   </button>
                   <button
                     onClick={closeModal}
-                    className="bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-0 shadow-lg hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50"
+                    className="bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-300 shadow-lg"
                   >
                     Close
                   </button>

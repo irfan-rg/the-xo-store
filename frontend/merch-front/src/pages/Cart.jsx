@@ -97,9 +97,9 @@ const Cart = () => {
               <span className="text-off-white">Total</span>
               <span className="text-bright-red">${(parseFloat(totalPrice) + 5).toFixed(2)}</span>
             </div>
-            <button className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0">
+            <Link to="/checkout" className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 inline-block text-center">
               Proceed to Checkout
-            </button>
+            </Link>
           </div>
         </div>
       </div>

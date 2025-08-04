@@ -1,9 +1,57 @@
 import { Link } from "react-router-dom"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 
 const Home = () => {
   const [isMuted, setIsMuted] = useState(true)
   const videoRef = useRef(null)
+  const [gradientStyle, setGradientStyle] = useState({ 
+    backgroundImage: `linear-gradient(to right, #DC2626, #D1D5DB, #14B8A6)` 
+  });
+  const [hasMouseMoved, setHasMouseMoved] = useState(false);
+  const positionRef = useRef({ currentX: 50, currentY: 50, targetX: 50, targetY: 50 });
+  const animationFrameId = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!hasMouseMoved) {
+        setHasMouseMoved(true);
+      }
+      positionRef.current.targetX = (e.clientX / window.innerWidth) * 100;
+      positionRef.current.targetY = (e.clientY / window.innerHeight) * 100;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    const animate = () => {
+      if (!hasMouseMoved) {
+        animationFrameId.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      const { currentX, currentY, targetX, targetY } = positionRef.current;
+      
+      const newX = currentX + (targetX - currentX) * 0.1;
+      const newY = currentY + (targetY - currentY) * 0.1;
+      
+      positionRef.current.currentX = newX;
+      positionRef.current.currentY = newY;
+      
+      setGradientStyle({
+        backgroundImage: `radial-gradient(circle at ${newX}% ${newY}%, #EF4444, #D1D5DB, #14B8A6)`,
+      });
+      
+      animationFrameId.current = requestAnimationFrame(animate);
+    }
+    
+    animationFrameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, [hasMouseMoved]);
 
   const toggleMute = () => {
     setIsMuted(!isMuted)
@@ -30,7 +78,10 @@ const Home = () => {
         <div className="absolute inset-0 bg-soft-black opacity-60"></div>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-          <h1 className="text-6xl sm:text-9xl md:text-[10rem] font-bold uppercase tracking-widest bg-gradient-to-r from-red-600 via-gray-300 to-teal-500 bg-clip-text text-transparent whitespace-nowrap">
+          <h1 
+            className="text-6xl sm:text-9xl md:text-[10rem] font-bold uppercase tracking-widest bg-clip-text text-transparent whitespace-nowrap"
+            style={gradientStyle}
+          >
             The Weeknd
           </h1>
         </div>
