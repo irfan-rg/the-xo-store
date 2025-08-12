@@ -22,7 +22,7 @@ function Products() {
   const fetchProducts = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/products${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`);
       setProducts(response.data);
       setError(null);
     } catch (err) {

@@ -131,7 +131,7 @@ const Checkout = () => {
     setPaymentError(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/create-payment-intent', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/create-payment-intent`, {
         amount: Math.round((parseFloat(totalPrice) + shippingCost) * 100), // Total with shipping in cents
       });
 

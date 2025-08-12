@@ -1,12 +1,36 @@
-# React + Vite
+# Frontend Setup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Environment Variables Setup
 
-Currently, two official plugins are available:
+1. Copy the `env.example` file to `.env`:
+   ```bash
+   cp env.example .env
+   ```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Open `.env` and replace the placeholder values with your actual credentials:
+   - **VITE_STRIPE_PUBLISHABLE_KEY**: Get from Stripe Dashboard → Developers → API Keys (use the publishable key starting with `pk_`)
+   - **VITE_API_URL**: Your backend API URL (use `http://localhost:5000` for development)
+   - **VITE_AUTH0_DOMAIN**: Your Auth0 domain from Auth0 Dashboard
+   - **VITE_AUTH0_CLIENT_ID**: Your Auth0 application client ID
 
-## Expanding the ESLint configuration
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Required Services
+
+- **Stripe**: For payment processing (publishable key)
+- **Auth0**: For user authentication
+- **Backend API**: Your Node.js/Express backend
+
+## Important Notes
+
+- All environment variables in Vite must start with `VITE_` to be accessible in the frontend
+- Never put secret keys in the frontend - only use publishable/public keys
+- The `.env` file is ignored by Git for security
