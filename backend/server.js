@@ -4,6 +4,7 @@ const cors = require('cors');
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 const Product = require('./models/Product');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -49,6 +50,29 @@ app.post('/api/upload-image', async (req, res) => {
   }
 });
 
+//Stripe Payment Intent
+app.post('/api/create-payment-intent', async (req, res) => {
+  const { amount } = req.body;
+  try {
+    if (!amount || amount < 50) { // Minimum amount check (50 cents)
+      return res.status(400).json({ error: 'Invalid amount. Must be at least 50 cents.' });
+    }
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount), // Ensure it's an integer
+      currency: 'usd',
+      payment_method_types: ['card'],
+    });
+    console.log('PaymentIntent created:', paymentIntent.id);
+    // TODO: In future, save order details to database here after confirmation
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Error creating PaymentIntent:', error.message);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
+//Seed Products
 app.get('/seed', async (req, res) => {
   try {
     // Clear existing products

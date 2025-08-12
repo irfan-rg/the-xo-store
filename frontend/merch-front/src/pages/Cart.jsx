@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { LineSpinner } from 'ldrs/react';
+import 'ldrs/react/LineSpinner.css';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, totalPrice } = useCart();
+  const [isNavigating, setIsNavigating] = useState(false);
+  const navigate = useNavigate();
+
+  const handleProceedToCheckout = () => {
+    setIsNavigating(true);
+    // Simulate a brief loading delay to make it feel more realistic
+    setTimeout(() => {
+      navigate('/checkout');
+    }, 800); // 800ms delay
+  };
 
   if (cartItems.length === 0) {
     return (
       <div className="bg-soft-black min-h-screen p-8 flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold text-off-white mb-4">Your cart is empty</h2>
-        <p className="text-gray-400 mb-6">Looks like you haven\'t added anything yet.</p>
+        <p className="text-gray-400 mb-6">Looks like you haven't added anything yet.</p>
         <Link 
           to="/products" 
           className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -31,7 +43,7 @@ const Cart = () => {
           </h1>
           <Link 
             to="/products" 
-            className="absolute left-0 top-1/2 -translate-y-1/9 text-off-white hover:text-bright-red transition-colors duration-300 flex items-center"
+            className="className= text-gray-400 hover:text-bright-red transition-colors duration-300 flex items-center"
           >
             <svg
               className="w-6 h-6 mr-1"
@@ -76,7 +88,7 @@ const Cart = () => {
                 </div>
                 <button 
                   onClick={() => removeFromCart(item._id)}
-                  className="ml-auto text-bright-red hover:text-red-400 transition-colors hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0"
+                  className="ml-auto text-bright-red hover:text-red-400 hover:outline-none hover:border-none focus:outline-none focus:border-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transition-all duration-0"
                 >
                   Remove
                 </button>
@@ -97,9 +109,26 @@ const Cart = () => {
               <span className="text-off-white">Total</span>
               <span className="text-bright-red">${(parseFloat(totalPrice) + 5).toFixed(2)}</span>
             </div>
-            <Link to="/checkout" className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 inline-block text-center">
-              Proceed to Checkout
-            </Link>
+            <button 
+              onClick={handleProceedToCheckout}
+              disabled={isNavigating}
+              className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-0 focus:border-none outline-none border-none"
+            >
+              {isNavigating ? (
+                <>
+                  <LineSpinner
+                    size="20"
+                    stroke="3"
+                    speed="1"
+                    color="#FFFFFF"
+                    className="mr-2"
+                  />
+                  ㅤProcessing...
+                </>
+              ) : (
+                'Proceed to Checkout'
+              )}
+            </button>
           </div>
         </div>
       </div>
