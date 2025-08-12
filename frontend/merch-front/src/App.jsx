@@ -56,8 +56,8 @@ function App() {
   const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
   return (
     <Auth0Provider
-      domain="dev-x6vdgqu0qeqokinl.us.auth0.com"
-      clientId="rCJPsiOcu23erb42a33h29W8ksh8WjpN"
+      domain={import.meta.env.VITE_AUTH0_DOMAIN || "dev-x6vdgqu0qeqokinl.us.auth0.com"}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID || "rCJPsiOcu23erb42a33h29W8ksh8WjpN"}
       redirectUri={window.location.origin + '/callback'}
       useRefreshTokens={true}
       cacheLocation="localstorage"
