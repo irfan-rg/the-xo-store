@@ -60,6 +60,7 @@ function Products() {
     }, 500); // Simulate a brief delay for loader visibility
   };
 
+  // Show loading spinner during auth state resolution or data fetching
   if (loading) {
     return (
       <div className="bg-soft-black min-h-screen p-8 flex flex-col items-center justify-center">
@@ -67,7 +68,7 @@ function Products() {
           size="40"
           stroke="3"
           speed="1"
-          color="#FF2E2E" // Matching the bright-red color from your theme
+          color="#FF2E2E"
           className="mb-4"
         />
         <p className="text-off-white text-lg">Loading products...</p>
