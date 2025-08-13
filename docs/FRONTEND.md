@@ -1,4 +1,4 @@
-# The Weeknd Store - Frontend
+# The XO Store - Frontend
 
 React-based frontend for The Weeknd's official merchandise store, built with modern web technologies for a premium shopping experience.
 
@@ -301,3 +301,9 @@ Test on:
 3. Ensure responsive design for all new components
 4. Test authentication and payment flows thoroughly
 5. Update documentation for new features
+
+## ✒️ License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+
+For detailed licensing information including third-party dependencies, see [LICENSE.md](./LICENSE.md).

@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide covers deploying both the frontend and backend of The Weeknd Store to production environments.
+This guide covers deploying both the frontend and backend of The XO Store to production environments.
 
 ## 📋 Pre-deployment Checklist
 
