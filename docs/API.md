@@ -1,6 +1,6 @@
 # API Documentation
 
-This document provides detailed information about the backend API endpoints for The Weeknd Store.
+This document provides detailed information about the backend API endpoints for The XO Store.
 
 ## Base URLs
 

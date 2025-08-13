@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Irfan G",
+  "license": "MIT",
+  "description": "Backend API for The XO Store - Node.js/Express e-commerce platform",
   "dependencies": {
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",

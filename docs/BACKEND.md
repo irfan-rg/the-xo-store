@@ -1,4 +1,4 @@
-# The Weeknd Store - Backend API
+# The XO Store - Backend API
 
 Node.js/Express backend for The Weeknd's official merchandise store, providing RESTful APIs for product management, payment processing, and image uploads.
 
@@ -335,6 +335,12 @@ app.get('/api/example', async (req, res) => {
 3. Test your changes thoroughly
 4. Update documentation if needed
 5. Submit pull requests with clear descriptions
+
+## ✒️ License
+
+This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+
+For detailed licensing information including third-party dependencies, see [LICENSE.md](./LICENSE.md).
 
 ## 🐛 Troubleshooting
 
