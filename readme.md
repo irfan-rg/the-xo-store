@@ -2,12 +2,18 @@
 
 A modern, full-stack e-commerce platform for The Weeknd's official merchandise, featuring exclusive apparel and music collections from albums like "Hurry Up Tomorrow" and "After Hours".
 
+<div align="center">
+
 ![The Weeknd Store](https://res.cloudinary.com/deqe0oqer/image/upload/v1754410702/favicon_zs1pui.ico)
+
+![The Weeknd Store](https://scontent.fblr11-1.fna.fbcdn.net/v/t39.30808-6/480150864_1185266189636447_8099438829274624942_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=zaa6mkGhkwsQ7kNvwFlksC0&_nc_oc=Adndbati46sbMJdM5gp-lNVLpxjOrupzY70MMSHlXc7RSRRPKdAuCzOjrz811hegvr0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&_nc_gid=8pak9axb7Hou3w4T1GgSBA&oh=00_AfXjRObGvWZ_PNC4W8wYZw6hNE-qEulzjh3MKYExd7IgVQ&oe=68A288B5)
+
+</div>
 
 ## 🚀 Live Production
 
 - **Frontend**: [https://thexostore.vercel.app](https://thexostore.vercel.app)
-- **Backend API**: Deployed on cloud platform
+- **Backend API**: Deployed on Cloud Platform
 
 ## ✨ Features
 
@@ -22,7 +28,7 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 
 ## 🛠️ Tech Stack
 
-### Frontend
+### 🖥️Frontend
 - **React 19** - Modern React with latest features
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
@@ -32,7 +38,9 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 - **Axios** - HTTP client
 - **Cloudinary** - Image optimization and delivery
 
-### Backend
+For detailed Frontend documentation, see [FRONTEND.md](./docs/FRONTEND.md)
+
+### 🗃️Backend
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
 - **MongoDB** - NoSQL database with Mongoose ODM
@@ -40,6 +48,8 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 - **Cloudinary API** - Image upload and management
 - **CORS** - Cross-Origin Resource Sharing
 - **dotenv** - Environment variable management
+
+For detailed Backend documentation, see [BACKEND.md](./docs/BACKEND.md)
 
 ## 📁 Project Structure
 
@@ -74,7 +84,7 @@ merch/
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/irfan-rg/the-xo-store
    cd merch
    ```
 

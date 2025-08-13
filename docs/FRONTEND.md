@@ -60,7 +60,7 @@ frontend/merch-front/
 ### Prerequisites
 
 - Node.js (v16 or higher)
-- Backend API running (see [backend README](../../backend/README.md))
+- Backend API running (see [Backend Documentation](./BACKEND.md))
 - Stripe account (for payments)
 - Auth0 account (for authentication)
 
@@ -214,7 +214,7 @@ Using Auth0 React SDK:
 - **GitHub Pages**: Static hosting for React apps
 - **Firebase Hosting**: Google's hosting platform
 
-For detailed deployment instructions, see [DEPLOYMENT.md](../../docs/DEPLOYMENT.md)
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## 🧪 Testing
 

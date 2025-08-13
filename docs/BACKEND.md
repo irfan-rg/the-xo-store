@@ -118,7 +118,7 @@ npm test        # Run tests (currently not implemented)
 ### Development
 - `GET /seed` - Populate database with sample products (development only)
 
-For detailed API documentation, see [API.md](../docs/API.md)
+For detailed API documentation, see [API.md](./API.md)
 
 ## 🔧 Configuration
 
@@ -250,7 +250,7 @@ const uploadResponse = await cloudinary.uploader.upload(fileStr, {
 - **Heroku** - Established platform
 - **DigitalOcean App Platform** - Developer-friendly
 
-For detailed deployment instructions, see [DEPLOYMENT.md](../docs/DEPLOYMENT.md)
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## 🧪 Testing
 
@@ -365,4 +365,4 @@ app.get('/api/example', async (req, res) => {
 - Verify image format and size
 - Check Cloudinary account limits
 
-For more help, check the main [troubleshooting guide](../docs/DEPLOYMENT.md#troubleshooting).
+For more help, check the main [troubleshooting guide](./DEPLOYMENT.md#troubleshooting).
