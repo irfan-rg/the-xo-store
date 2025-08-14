@@ -94,16 +94,16 @@ function Products() {
   }
 
   return (
-    <div className="bg-soft-black min-h-screen p-8">
+    <div className="bg-soft-black min-h-screen pt-20 sm:pt-24 md:pt-28 p-4 sm:p-6 md:p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-bold mb-12 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-center">
           <span className="bg-gradient-to-r from-red-600 via-white to-teal-300 bg-clip-text text-transparent">
             Exclusive Merch
           </span>
         </h1>
 
         {/* Search and Filters */}
-        <div className="mb-12 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
+        <div className="mb-8 sm:mb-10 md:mb-12 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
           <div className="relative flex-1 max-w-lg">
             <input
               type="text"
@@ -113,7 +113,7 @@ function Products() {
               className="w-full bg-element text-off-white rounded-full pl-6 pr-10 py-3 focus:outline-none focus:ring-2 focus:ring-bright-red border border-gray-800"
             />
             <svg
-              className="absolute right-4 top-3.5 h-5 w-5 text-gray-400"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -127,11 +127,11 @@ function Products() {
             </svg>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="flex space-x-3 sm:space-x-4">
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="bg-element text-off-white rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-bright-red border border-gray-800"
+              className="bg-element text-off-white rounded-full px-4 sm:px-6 py-3 focus:outline-none focus:ring-2 focus:ring-bright-red border border-gray-800 text-sm sm:text-base flex-1 sm:flex-none"
             >
               <option value="all">All Categories</option>
               <option value="apparel">Apparel</option>
@@ -141,7 +141,7 @@ function Products() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-element text-off-white rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-bright-red border border-gray-800"
+              className="bg-element text-off-white rounded-full px-4 sm:px-6 py-3 focus:outline-none focus:ring-2 focus:ring-bright-red border border-gray-800 text-sm sm:text-base flex-1 sm:flex-none"
             >
               <option value="default">Sort by</option>
               <option value="price-low">Price: Low to High</option>
@@ -154,38 +154,38 @@ function Products() {
         {/* Products Grid */}
         {filteredProducts.length === 0 ? (
           <div className="text-center text-gray-400 py-12">
-            <h3 className="text-xl text-off-white">No products found</h3>
-            <p className="mt-2 text-gray-500">Try adjusting your search or filters</p>
+            <h3 className="text-lg sm:text-xl text-off-white">No products found</h3>
+            <p className="mt-2 text-sm sm:text-base text-gray-500">Try adjusting your search or filters</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
             {filteredProducts.map((product) => (
               <div
                 key={product._id}
-                className="bg-element rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-800 cursor-pointer"
+                className="bg-element rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 sm:hover:-translate-y-2 border border-gray-800 cursor-pointer active:scale-95"
                 onClick={() => setSelectedProduct(product)}
               >
                 <div className="relative group">
                   <img
                     src={product.imageUrl}
                     alt={product.name}
-                    className="w-full h-64 object-cover"
+                    className="w-full h-96 sm:h-72 md:h-64 object-cover"
                   />
                   <div className="absolute inset-0 bg-soft-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
                 </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-semibold text-off-white">{product.name}</h3>
-                    <span className="text-2xl font-bold text-bright-red">${product.price}</span>
+                <div className="p-4 sm:p-5 md:p-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 space-y-2 sm:space-y-0">
+                    <h3 className="text-lg sm:text-xl font-semibold text-off-white leading-tight">{product.name}</h3>
+                    <span className="text-xl sm:text-2xl font-bold text-bright-red">${product.price}</span>
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-center">
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToCart(product);
                       }}
                       disabled={addingToCart === product._id}
-                      className="mt-3 mx-auto bg-bright-red text-off-white p-2 rounded-half hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center"
+                      className="w-full sm:w-auto mt-3 bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center min-h-[44px] text-base font-medium"
                     >
                       {addingToCart === product._id ? (
                         <LineSpinner
@@ -221,10 +221,10 @@ function Products() {
 
         {/* Notification Popup */}
         {notification && (
-          <div className="fixed bottom-4 right-4 bg-element text-off-white p-4 rounded-lg shadow-lg border border-gray-700 animate-fade-in-out">
+          <div className="fixed bottom-4 left-4 right-4 sm:bottom-4 sm:right-4 sm:left-auto sm:max-w-xs bg-element text-off-white p-4 rounded-lg shadow-lg border border-gray-700 animate-fade-in-out z-40">
             <div className="flex items-center">
               <svg
-                className="w-6 h-6 text-bright-red mr-2"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-bright-red mr-2 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -236,41 +236,51 @@ function Products() {
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-              <span>{notification}</span>
+              <span className="text-sm sm:text-base">{notification}</span>
             </div>
           </div>
         )}
 
         {/* Product Preview Modal */}
         {selectedProduct && (
-          <div className="fixed inset-0 bg-soft-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in"
+          <div className="fixed inset-0 bg-soft-black/90 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in"
                onClick={closeModal}
           >
-            <div className="bg-element rounded-xl overflow-hidden shadow-2xl border border-gray-700 max-w-4xl w-full flex flex-col md:flex-row"
+            <div className="bg-element rounded-t-2xl sm:rounded-xl overflow-hidden shadow-2xl border-t sm:border border-gray-700 max-w-4xl w-full max-h-[90vh] sm:max-h-[85vh] flex flex-col md:flex-row"
                  onClick={(e) => e.stopPropagation()}
             >
               {/* Left Side - Image */}
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 relative">
                 <img
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-96 sm:h-64 md:h-full object-cover"
                 />
+                {/* Close button for mobile */}
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 md:hidden bg-soft-black/70 text-off-white rounded-full p-2 hover:bg-soft-black/90 transition-colors"
+                  aria-label="Close modal"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
               {/* Right Side - Details */}
-              <div className="p-6 md:w-1/2 flex flex-col justify-between">
+              <div className="p-4 sm:p-6 md:w-1/2 flex flex-col justify-between overflow-y-auto">
                 <div>
-                  <h2 className="text-3xl font-bold text-off-white mb-4">{selectedProduct.name}</h2>
-                  <p className="text-bright-red text-2xl font-bold mb-4">${selectedProduct.price}</p>
-                  <p className="text-gray-300 mb-6">{selectedProduct.description}</p>
-                  <p className="text-gray-400 text-sm mb-2">Category: {selectedProduct.category.charAt(0).toUpperCase() + selectedProduct.category.slice(1)}</p>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-off-white mb-3 sm:mb-4 leading-tight">{selectedProduct.name}</h2>
+                  <p className="text-bright-red text-xl sm:text-2xl font-bold mb-3 sm:mb-4">${selectedProduct.price}</p>
+                  <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">{selectedProduct.description}</p>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-2">Category: {selectedProduct.category.charAt(0).toUpperCase() + selectedProduct.category.slice(1)}</p>
                   {selectedProduct.album && (
-                    <p className="text-gray-400 text-sm mb-2">Album/Collection: {selectedProduct.album}</p>
+                    <p className="text-gray-400 text-xs sm:text-sm mb-2">Album/Collection: {selectedProduct.album}</p>
                   )}
                   {/* Additional Product Info */}
-                  <div className="mt-4">
-                    <h3 className="text-lg font-semibold text-off-white mb-2">Additional Details</h3>
-                    <ul className="text-gray-300 text-sm space-y-1">
+                  <div className="mt-3 sm:mt-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-off-white mb-2">Additional Details</h3>
+                    <ul className="text-gray-300 text-xs sm:text-sm space-y-1">
                       {selectedProduct.category === 'apparel' && selectedProduct.details && (
                         <>
                           {selectedProduct.details.fabric && (
@@ -300,14 +310,14 @@ function Products() {
                     </ul>
                   </div>
                 </div>
-                <div className="flex gap-4 mt-6">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 sm:mt-6">
                   <button
                     onClick={() => {
                       handleAddToCart(selectedProduct);
                       // Removed closeModal() to keep the modal open after adding to cart
                     }}
                     disabled={addingToCart === selectedProduct._id}
-                    className="bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg flex-1"
+                    className="bg-bright-red text-off-white px-6 py-4 sm:py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg flex-1 min-h-[44px] text-base font-medium"
                   >
                     {addingToCart === selectedProduct._id ? (
                       <div className="flex items-center justify-center">
@@ -326,7 +336,7 @@ function Products() {
                   </button>
                   <button
                     onClick={closeModal}
-                    className="bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-300 shadow-lg"
+                    className="hidden sm:block bg-gray-700 text-off-white px-6 py-3 rounded-full hover:bg-gray-600 transition-all duration-300 shadow-lg min-h-[44px]"
                   >
                     Close
                   </button>
