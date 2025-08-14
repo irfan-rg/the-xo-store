@@ -270,18 +270,18 @@ const Checkout = () => {
   const totalWithShipping = (parseFloat(totalPrice) + shippingCost).toFixed(2);
 
   return (
-    <div className="bg-soft-black min-h-screen p-8">
-      <h1 className="text-5xl font-bold mb-12 text-center">
+    <div className="bg-soft-black min-h-screen pt-20 sm:pt-24 md:pt-28 p-4 sm:p-6 md:p-8">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 sm:mb-10 md:mb-12 text-center">
         <span className="bg-gradient-to-r from-red-600 via-white to-teal-300 bg-clip-text text-transparent">
           Checkout
         </span>
       </h1>
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
         {/* Shipping Information */}
-        <div className="bg-element p-6 rounded-lg border border-gray-800 shadow-md md:w-2/3">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-off-white">Shipping Information</h2>
-            <Link to="/cart" className="text-gray-400 hover:text-bright-red transition-colors duration-300 flex items-center">
+        <div className="bg-element p-4 sm:p-6 rounded-lg border border-gray-800 shadow-md md:w-2/3">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6 gap-4 sm:gap-0">
+            <h2 className="text-xl sm:text-2xl font-bold text-off-white">Shipping Information</h2>
+            <Link to="/cart" className="text-gray-400 hover:text-bright-red transition-colors duration-300 flex items-center justify-center sm:justify-start">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
@@ -297,7 +297,7 @@ const Checkout = () => {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.firstName 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -316,7 +316,7 @@ const Checkout = () => {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.lastName 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -335,7 +335,7 @@ const Checkout = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.email 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -354,7 +354,7 @@ const Checkout = () => {
                 name="address"
                 value={formData.address}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.address 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -373,7 +373,7 @@ const Checkout = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.city 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -392,7 +392,7 @@ const Checkout = () => {
                 name="state"
                 value={formData.state}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.state 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -411,7 +411,7 @@ const Checkout = () => {
                 name="zip"
                 value={formData.zip}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.zip 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -430,7 +430,7 @@ const Checkout = () => {
                 name="country"
                 value={formData.country}
                 onChange={handleInputChange}
-                className={`w-full bg-gray-600 text-off-white p-3 rounded border focus:outline-none focus:ring-2 ${
+                className={`w-full bg-gray-600 text-off-white p-4 md:p-3 rounded border focus:outline-none focus:ring-2 text-base min-h-[44px] ${
                   formErrors.country 
                     ? 'border-bright-red focus:ring-bright-red' 
                     : 'border-gray-500 focus:ring-bright-red'
@@ -444,8 +444,8 @@ const Checkout = () => {
             </form>
         </div>
         {/* Order Summary */}
-        <div className="bg-element p-6 rounded-lg border border-gray-800 shadow-md md:w-1/3">
-          <h2 className="text-2xl font-bold text-off-white mb-4">Order Summary</h2>
+        <div className="bg-element p-4 sm:p-6 rounded-lg border border-gray-800 shadow-md md:w-1/3 order-first md:order-last">
+          <h2 className="text-xl sm:text-2xl font-bold text-off-white mb-4">Order Summary</h2>
           <div className="max-h-40 overflow-y-auto mb-4">
             {cartItems.map((item) => (
               <div key={item._id} className="flex justify-between mb-2 border-b border-gray-700 pb-2">
@@ -485,7 +485,7 @@ const Checkout = () => {
           <button
             onClick={handleRealPayment}
             disabled={realProcessing}
-            className="bg-bright-red text-off-white px-4 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 shadow-lg w-full mt-6 focus:outline-none focus:ring-0 focus:border-none outline-none border-none"
+            className="bg-bright-red text-off-white px-6 py-4 md:px-4 md:py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg w-full mt-6 focus:outline-none focus:ring-0 focus:border-none outline-none border-none min-h-[44px] text-base md:text-sm font-medium"
           >
             {realProcessing ? (
               <div className="flex items-center justify-center">
@@ -499,7 +499,7 @@ const Checkout = () => {
           <button
             onClick={handleDemoPayment}
             disabled={demoProcessing}
-            className="bg-gray-700 text-off-white px-4 py-3 rounded-full hover:bg-gray-600 transition-all duration-300 shadow-lg w-full mt-4 focus:outline-none focus:ring-0 focus:border-none outline-none border-none"
+            className="bg-gray-700 text-off-white px-6 py-4 md:px-4 md:py-3 rounded-full hover:bg-gray-600 transition-all duration-300 active:scale-95 shadow-lg w-full mt-4 focus:outline-none focus:ring-0 focus:border-none outline-none border-none min-h-[44px] text-base md:text-sm font-medium"
           >
             {demoProcessing ? (
               <div className="flex items-center justify-center">
