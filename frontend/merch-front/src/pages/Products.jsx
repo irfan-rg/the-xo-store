@@ -13,6 +13,11 @@ function Products() {
   const [sortBy, setSortBy] = useState('default');
   const { addToCart, notification } = useCart();
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [addingToCart, setAddingToCart] = useState(null); // Track which product is being added to cart
 
   useEffect(() => {
