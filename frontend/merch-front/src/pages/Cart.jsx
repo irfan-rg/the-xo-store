@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { LineSpinner } from 'ldrs/react';
@@ -8,6 +8,11 @@ const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, totalPrice } = useCart();
   const [isNavigating, setIsNavigating] = useState(false);
   const navigate = useNavigate();
+
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleProceedToCheckout = () => {
     setIsNavigating(true);
@@ -147,7 +152,7 @@ const Cart = () => {
             <button 
               onClick={handleProceedToCheckout}
               disabled={isNavigating}
-              className="bg-bright-red text-off-white px-6 py-4 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg w-full mt-6 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 min-h-[44px] text-base sm:text-lg font-medium"
+              className="bg-bright-red text-off-white px-6 py-4 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg w-full mt-6 flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none focus:outline-none focus:ring-0 focus:border-none outline-none border-none min-h-[44px] text-base sm:text-lg font-medium"
             >
               {isNavigating ? (
                 <>

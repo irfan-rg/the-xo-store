@@ -27,6 +27,10 @@
   animation: fade-in 0.3s ease-in-out forwards;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
 
     font-family: Impact, system-ui, sans-serif;

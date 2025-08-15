@@ -11,6 +11,11 @@ const Home = () => {
   const positionRef = useRef({ currentX: 50, currentY: 50, targetX: 50, targetY: 50 });
   const animationFrameId = useRef(null);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!hasMouseMoved) {

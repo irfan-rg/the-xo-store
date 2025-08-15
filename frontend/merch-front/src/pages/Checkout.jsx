@@ -33,6 +33,11 @@ const Checkout = () => {
   const [realProcessing, setRealProcessing] = useState(false);
   const [demoProcessing, setDemoProcessing] = useState(false);
 
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Check authentication immediately and trigger redirect if needed
   if (!isLoading && !isAuthenticated && !hasAlerted.current && !isRedirectingToLogin) {
     hasAlerted.current = true;
