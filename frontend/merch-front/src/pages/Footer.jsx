@@ -36,7 +36,7 @@ function Footer() {
 
           {/* Copyright */}
           <p className="text-gray-400 text-sm">
-            &copy; {new Date().getFullYear()} Artist Name. All rights reserved.
+            &copy; {new Date().getFullYear()}. All rights reserved.
           </p>
         </div>
       </div>

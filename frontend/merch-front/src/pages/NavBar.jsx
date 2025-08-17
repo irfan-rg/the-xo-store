@@ -154,7 +154,7 @@ function NavBar() {
               </Link>
               <Link 
                 to="/cart" 
-                className="px-3 py-2 rounded-full bg-bright-red text-off-white hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 relative"
+                className="px-3 py-1 rounded-full bg-bright-red text-off-white hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 relative"
               >
                 Cart
                 {totalItems > 0 && (
@@ -275,7 +275,7 @@ function NavBar() {
               {/* Navigation Links */}
               <Link 
                 to="/" 
-                className="text-2xl font-semibold text-off-white hover:text-bright-red transition-colors duration-300 transform hover:scale-105 active:scale-95 py-4 px-8 text-center"
+                className="text-xl font-semibold text-off-white hover:text-bright-red transition-colors duration-300 transform hover:scale-105 active:scale-95 py-4 px-8 text-center"
                 onClick={toggleMobileMenu}
               >
                 Home
@@ -283,7 +283,7 @@ function NavBar() {
               
               <Link 
                 to="/products" 
-                className="text-2xl font-semibold text-off-white hover:text-bright-red transition-colors duration-300 transform hover:scale-105 active:scale-95 py-4 px-8 text-center"
+                className="text-xl font-semibold text-off-white hover:text-bright-red transition-colors duration-300 transform hover:scale-105 active:scale-95 py-4 px-8 text-center"
                 onClick={toggleMobileMenu}
               >
                 Products
@@ -291,7 +291,7 @@ function NavBar() {
               
               <Link 
                 to="/cart" 
-                className="text-2xl font-semibold bg-bright-red text-off-white px-6 py-3 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 relative"
+                className="text-xl font-semibold bg-bright-red text-off-white px-6 py-2 rounded-full hover:bg-off-white hover:text-soft-black transition-all duration-300 transform hover:scale-105 active:scale-95 relative"
                 onClick={toggleMobileMenu}
               >
                 Cart

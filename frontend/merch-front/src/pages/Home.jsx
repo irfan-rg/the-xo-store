@@ -127,7 +127,7 @@ const Home = () => {
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
           <h1 
-            className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase tracking-widest bg-clip-text text-transparent whitespace-nowrap"
+            className="text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold uppercase tracking-widest bg-clip-text text-transparent whitespace-nowrap"
             style={gradientStyle}
           >
             The Weeknd
@@ -135,10 +135,10 @@ const Home = () => {
         </div>
 
         <div className="absolute bottom-32 left-1/2 -translate-x-1/2 z-10 w-full text-center px-4">
-          <p className="text-lg sm:text-xl md:text-2xl max-w-lg mb-8 font-light mx-auto leading-relaxed">Dive into the sound. Grab exclusive merch now.</p>
+          <p className="text-base sm:text-xl md:text-2xl max-w-lg mb-8 font-light mx-auto leading-relaxed">Dive into the sound. Grab exclusive merch now.</p>
           <Link
             to="/products"
-            className="inline-block backdrop-blur-[1px] bg-white/10 text-off-white px-8 py-4 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] text-base sm:text-lg"
+            className="inline-block backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[120px] text-sm sm:text-base md:text-lg"
           >
             Shop Here
           </Link>
@@ -187,10 +187,10 @@ const Home = () => {
 
         <div className="text-center space-y-6 max-w-4xl mx-auto">
           <p className="text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mx-auto px-4">
-            The Weeknd, born Abel Makkonen Tesfaye, is a Canadian singer, songwriter, and record producer known for his dark, cinematic soundscapes that blend R&B, pop, and electronic music. His music often explores themes of love, heartbreak, and hedonism, resonating with a global audience.
+            The Weeknd, born <span className="text-bright-red font-semibold">Abel Tesfaye</span>, is a Canadian singer, songwriter, and record producer known for his dark, cinematic soundscapes that blend R&B, pop, and electronic music. His music often explores themes of love, heartbreak, and hedonism, resonating with a global audience.
           </p>
           <p className="text-base sm:text-lg md:text-xl leading-relaxed opacity-90 max-w-3xl mx-auto px-4">
-            Rising to fame with his early mixtapes like 'House of Balloons' in 2011, The Weeknd has since become a cultural icon with chart-topping albums such as 'Beauty Behind the Madness' and 'Starboy'. His innovative style and captivating performances, including the Super Bowl LV Halftime Show, have solidified his place in modern music history. Explore the latest merch and join the XO movement.
+            Rising to fame with his early mixtapes like '<span className="text-bright-red font-semibold">House of Balloons</span>' in 2011, The Weeknd has since become a cultural icon with chart-topping albums such as 'Beauty Behind the Madness' and '<span className="text-bright-red font-semibold">Starboy</span>'. His innovative style and captivating performances, including the Super Bowl LV Halftime Show, have solidified his place in modern music history. Explore the latest merch and join the <span className="text-bright-red font-semibold">XO</span> movement.
           </p>
           
           <div className="pt-10">

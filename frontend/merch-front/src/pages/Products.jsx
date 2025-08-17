@@ -174,7 +174,14 @@ function Products() {
                   <img
                     src={product.imageUrl}
                     alt={product.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-96 sm:h-72 md:h-64 object-cover"
+                    onLoad={(e) => e.target.classList.add('loaded')}
+                    style={{
+                      transition: 'opacity 0.3s ease-in-out',
+                      opacity: 1
+                    }}
                   />
                   <div className="absolute inset-0 bg-soft-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
                 </div>
@@ -259,6 +266,8 @@ function Products() {
                 <img
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-96 sm:h-64 md:h-full object-cover"
                 />
                 {/* Close button for mobile */}
