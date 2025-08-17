@@ -58,10 +58,44 @@ const Home = () => {
     };
   }, [hasMouseMoved]);
 
-  const toggleMute = () => {
-    setIsMuted(!isMuted)
+  // Ensure video plays on mobile
+  useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.muted = !isMuted
+      const video = videoRef.current;
+      
+      // Force play on load with error handling
+      const playVideo = () => {
+        video.play().catch(() => {
+          // If autoplay fails, that's okay - user can unmute to play
+          console.log('Autoplay prevented by browser policy');
+        });
+      };
+      
+      // Try to play when video loads
+      if (video.readyState >= 3) {
+        playVideo();
+      } else {
+        video.addEventListener('canplay', playVideo, { once: true });
+      }
+    }
+  }, []);
+
+  const toggleMute = () => {
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    
+    if (videoRef.current) {
+      videoRef.current.muted = newMutedState;
+      
+      // Force play after unmute (mobile browsers sometimes pause)
+      if (!newMutedState) {
+        videoRef.current.play().catch(() => {
+          // If play fails, revert to muted
+          setIsMuted(true);
+          videoRef.current.muted = true;
+          videoRef.current.play();
+        });
+      }
     }
   }
 
@@ -73,7 +107,16 @@ const Home = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat overflow-hidden"
         >
-          <video autoPlay loop muted={isMuted} className="w-full h-full object-cover" ref={videoRef}>
+          <video 
+            autoPlay 
+            loop 
+            muted={isMuted} 
+            playsInline 
+            controls={false}
+            className="w-full h-full object-cover" 
+            ref={videoRef}
+            style={{ pointerEvents: 'none' }}
+          >
             <source src="https://res.cloudinary.com/deqe0oqer/video/upload/v1751905102/The_Weeknd_Tour_Intro.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
