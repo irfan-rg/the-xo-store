@@ -7,11 +7,18 @@ import 'ldrs/react/LineSpinner.css';
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, totalPrice } = useCart();
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  // Scroll to top on page load
+  // Scroll to top on page load and simulate loading
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Simulate loading time for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 400); // 600ms loading time
+
+    return () => clearTimeout(timer);
   }, []);
 
   const handleProceedToCheckout = () => {
@@ -21,6 +28,22 @@ const Cart = () => {
       navigate('/checkout');
     }, 800); // 800ms delay
   };
+
+  // Show loading spinner when cart is loading
+  if (isLoading) {
+    return (
+      <div className="bg-soft-black min-h-screen pt-20 sm:pt-24 md:pt-28 p-4 sm:p-6 md:p-8 flex flex-col items-center justify-center">
+        <LineSpinner
+          size="40"
+          stroke="3"
+          speed="1"
+          color="#FF2E2E"
+          className="mb-4"
+        />
+        <p className="text-off-white text-lg">Loading your cart...</p>
+      </div>
+    );
+  }
 
   if (cartItems.length === 0) {
     return (

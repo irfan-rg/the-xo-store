@@ -38,6 +38,13 @@ const Checkout = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Scroll to top when order is successfully placed
+  useEffect(() => {
+    if (orderPlaced) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [orderPlaced]);
+
   // Check authentication immediately and trigger redirect if needed
   if (!isLoading && !isAuthenticated && !hasAlerted.current && !isRedirectingToLogin) {
     hasAlerted.current = true;

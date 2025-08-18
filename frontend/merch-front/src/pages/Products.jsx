@@ -25,16 +25,24 @@ function Products() {
   }, [selectedCategory]);
 
   const fetchProducts = async () => {
+    setLoading(true);
+    const startTime = Date.now();
+    
     try {
-      setLoading(true);
       const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`);
       setProducts(response.data);
       setError(null);
     } catch (err) {
       setError('Failed to fetch products. Please try again later.');
-    } finally {
-      setLoading(false);
     }
+    
+    // Ensure minimum 600 milliseconds loading time regardless of success/failure
+    const elapsedTime = Date.now() - startTime;
+    const remainingTime = Math.max(0, 400 - elapsedTime);
+    
+    setTimeout(() => {
+      setLoading(false);
+    }, remainingTime);
   };
 
   // Add a useEffect to log category changes
@@ -174,14 +182,8 @@ function Products() {
                   <img
                     src={product.imageUrl}
                     alt={product.name}
-                    loading="lazy"
-                    decoding="async"
                     className="w-full h-96 sm:h-72 md:h-64 object-cover"
                     onLoad={(e) => e.target.classList.add('loaded')}
-                    style={{
-                      transition: 'opacity 0.3s ease-in-out',
-                      opacity: 1
-                    }}
                   />
                   <div className="absolute inset-0 bg-soft-black opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
                 </div>
@@ -266,8 +268,6 @@ function Products() {
                 <img
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
-                  loading="lazy"
-                  decoding="async"
                   className="w-full h-96 sm:h-64 md:h-full object-cover"
                 />
                 {/* Close button for mobile */}
