@@ -53,7 +53,7 @@ video::-ms-media-controls {
 
 :root {
 
-    font-family: Impact, system-ui, sans-serif;
+    font-family: Impact, "Anton", system-ui, sans-serif;
     font-weight: normal; /* Attempt to reduce weight, though Impact is inherently bold */
     letter-spacing: 0.03em; /* Slight letter spacing to reduce density */
 
