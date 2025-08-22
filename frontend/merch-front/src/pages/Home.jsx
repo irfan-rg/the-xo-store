@@ -16,6 +16,29 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Dynamic viewport height for mobile browsers
+  useEffect(() => {
+    const setVH = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Set initial value
+    setVH();
+
+    // Update on resize and orientation change
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', () => {
+      // Small delay to ensure orientation change is complete
+      setTimeout(setVH, 100);
+    });
+
+    return () => {
+      window.removeEventListener('resize', setVH);
+      window.removeEventListener('orientationchange', setVH);
+    };
+  }, []);
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (!hasMouseMoved) {
@@ -102,7 +125,7 @@ const Home = () => {
   return (
     <div className="bg-soft-black text-off-white min-h-screen">
       {/* Hero Section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
+      <section className="h-screen-mobile md:h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
         {/* Background Video */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -162,8 +185,8 @@ const Home = () => {
           </svg>
         </div>
 
-        {/* Mute Button */}
-        <div className="absolute bottom-8 right-4 md:right-8 z-20">
+        {/* Mute Button - positioned to avoid mobile browser UI */}
+        <div className="absolute bottom-20 sm:bottom-8 right-4 md:right-8 z-20 safe-area-inset">
           <button 
             onClick={toggleMute} 
             className="backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[44px] text-sm sm:text-base"

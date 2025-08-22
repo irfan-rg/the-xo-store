@@ -50,6 +50,36 @@ function Products() {
     console.log('Category changed to:', selectedCategory);
   }, [selectedCategory]);
 
+  // Handle browser back navigation and escape key for modal
+  useEffect(() => {
+    const handlePopState = (event) => {
+      if (selectedProduct) {
+        event.preventDefault();
+        setSelectedProduct(null);
+        // Push the current state back to prevent actual navigation
+        window.history.pushState(null, '', window.location.href);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && selectedProduct) {
+        closeModal();
+      }
+    };
+
+    if (selectedProduct) {
+      // Add a history entry when modal opens
+      window.history.pushState(null, '', window.location.href);
+      window.addEventListener('popstate', handlePopState);
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedProduct]);
+
   const filteredProducts = products
     .filter((product) => 
       product.name.toLowerCase().includes(searchQuery.toLowerCase())

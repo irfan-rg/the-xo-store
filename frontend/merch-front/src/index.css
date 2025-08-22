@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import custom fonts from Google Fonts */
-/* Removed unnecessary imports since we're using system fonts */
-
 /* Custom animation for notification */
 @keyframes fade-in-out {
   0% { opacity: 0; transform: translateY(20px); }
@@ -67,6 +64,45 @@ video::-ms-media-controls {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Dynamic viewport height for mobile browsers */
+  --vh: 1vh;
+}
+
+/* Mobile viewport fix for browser UI */
+@supports (height: 100dvh) {
+  :root {
+    --vh: 1dvh;
+  }
+}
+
+/* Fallback for older browsers - use CSS custom properties for dynamic height */
+.h-screen-mobile {
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+.min-h-screen-mobile {
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Safe area insets for modern mobile devices */
+.safe-area-inset {
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-top: env(safe-area-inset-top);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Mobile browser UI compensation */
+@media screen and (max-width: 768px) {
+  /* Ensure content doesn't get hidden behind browser UI */
+  .mobile-safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .mobile-safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
