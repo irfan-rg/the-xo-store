@@ -69,7 +69,7 @@ video::-ms-media-controls {
 /* Dynamic mute button positioning for mobile browser UI */
 @media screen and (max-width: 640px) {
   .mute-btn-mobile {
-    bottom: max(2rem, calc(100vh - 100dvh + 2rem));
+    bottom: max(1.2em, calc(100vh - 100dvh + 1.2em));
   }
 }
 
