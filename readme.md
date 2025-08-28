@@ -6,7 +6,7 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 
 ![The XO Store](https://res.cloudinary.com/deqe0oqer/image/upload/v1754410702/favicon_zs1pui.ico)
 
-![The XO Store](https://scontent.fblr11-1.fna.fbcdn.net/v/t39.30808-6/480150864_1185266189636447_8099438829274624942_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=zaa6mkGhkwsQ7kNvwFlksC0&_nc_oc=Adndbati46sbMJdM5gp-lNVLpxjOrupzY70MMSHlXc7RSRRPKdAuCzOjrz811hegvr0&_nc_zt=23&_nc_ht=scontent.fblr11-1.fna&_nc_gid=8pak9axb7Hou3w4T1GgSBA&oh=00_AfXjRObGvWZ_PNC4W8wYZw6hNE-qEulzjh3MKYExd7IgVQ&oe=68A288B5)
+![The XO Store](https://res.cloudinary.com/deqe0oqer/image/upload/v1756387292/red-weeknd_elrseh.jpg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
