@@ -80,6 +80,21 @@ const Home = () => {
     }
   }, []);
 
+  // Keyboard event listener for mute toggle
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key.toLowerCase() === 'm') {
+        toggleMute();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, [isMuted]);
+  
   const toggleMute = () => {
     const newMutedState = !isMuted;
     setIsMuted(newMutedState);
@@ -138,7 +153,7 @@ const Home = () => {
           <p className="text-base sm:text-xl md:text-2xl max-w-lg mb-8 font-light mx-auto leading-relaxed">Dive into the sound. Grab exclusive merch now.</p>
           <Link
             to="/products"
-            className="inline-block backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[120px] text-sm sm:text-base md:text-lg"
+            className="inline-block backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 sm:px-6 sm:py-2 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[120px] text-sm sm:text-base md:text-lg"
           >
             Shop Here
           </Link>
@@ -166,7 +181,7 @@ const Home = () => {
         <div className="absolute mute-btn-mobile sm:bottom-8 right-4 md:right-8 z-20">
           <button 
             onClick={toggleMute} 
-            className="backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[44px] text-sm sm:text-base"
+            className="backdrop-blur-[1px] bg-white/10 text-off-white px-4 py-3 sm:px-4 sm:py-2 rounded-full font-semibold shadow-lg border border-white/5 hover:bg-white/20 hover:border-white/5 hover:outline-none transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-bright-red focus:ring-opacity-50 transform hover:scale-105 active:scale-95 min-h-[44px] min-w-[44px] text-sm sm:text-base"
             aria-label={isMuted ? "Unmute video" : "Mute video"}
           >
             {isMuted ? (
