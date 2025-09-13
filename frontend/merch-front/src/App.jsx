@@ -1,6 +1,7 @@
 // App.jsx
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import React from 'react';
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import { CartProvider } from './context/CartContext';
 import { LineSpinner } from 'ldrs/react';
@@ -53,7 +54,22 @@ function Callback() {
 }
 
 function App() {
-  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+  // Enhanced Stripe loading with ad blocker detection
+  const stripePromise = React.useMemo(async () => {
+    try {
+      console.log('🔄 Loading Stripe...');
+      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+      if (!stripe) {
+        console.error('❌ Stripe failed to load - likely blocked by ad blocker');
+        return null;
+      }
+      console.log('✅ Stripe loaded successfully');
+      return stripe;
+    } catch (error) {
+      console.error('❌ Stripe loading error:', error);
+      return null;
+    }
+  }, []);
   return (
     <Auth0Provider
       domain={import.meta.env.VITE_AUTH0_DOMAIN || "dev-x6vdgqu0qeqokinl.us.auth0.com"}

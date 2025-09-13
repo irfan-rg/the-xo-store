@@ -245,8 +245,8 @@ const uploadResponse = await cloudinary.uploader.upload(fileStr, {
 
 ### Platform Options
 
-- **Railway** - Recommended for ease of use
 - **Render** - Good free tier
+- **Railway** - Recommended for ease of use
 - **Heroku** - Established platform
 - **DigitalOcean App Platform** - Developer-friendly
 
@@ -290,13 +290,6 @@ curl -X POST http://localhost:5000/api/create-payment-intent \
 - [ ] Error handling works correctly
 
 ## 🛠️ Development Guidelines
-
-### Code Style
-
-- Use consistent indentation (2 spaces)
-- Use meaningful variable names
-- Add comments for complex logic
-- Handle errors appropriately
 
 ### Error Handling
 

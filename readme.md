@@ -18,7 +18,7 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 ## 🚀 Live Production
 
 - **Frontend**: [https://thexostore.vercel.app](https://thexostore.vercel.app)
-- **Backend API**: Deployed on Cloud Platform
+- **Backend API**: Deployed on Render
 
 ## ✨ Features
 
@@ -174,6 +174,15 @@ Can be deployed to various platforms (Railway, Render, Heroku, etc.)
 For detailed deployment instructions, see [DEPLOYMENT.md](./docs/DEPLOYMENT.md)
 
 ---
+
+
+## Code Review
+
+High‑quality contributions are welcome. Please read our code review guidance before opening a PR:
+
+- Guidelines: [docs/code-review/CODE_REVIEW.md](docs/code-review/CODE_REVIEW.md)
+- Checklists: [docs/code-review/CHECKLISTS.md](docs/code-review/CHECKLISTS.md)
+- Architecture Overview: [docs/code-review/ARCHITECTURE_OVERVIEW.md](docs/code-review/ARCHITECTURE_OVERVIEW.md)
 
 
 ## Contributing

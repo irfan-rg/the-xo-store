@@ -5,7 +5,7 @@ This document provides detailed information about the backend API endpoints for 
 ## Base URLs
 
 - **Development**: `http://localhost:5000`
-- **Production**: `[Your deployed backend URL]`
+- **Production**: `https://thexostore-backend.onrender.com`
 
 ## Authentication
 
@@ -237,7 +237,7 @@ The API accepts requests from:
 The following environment variables are required for the backend:
 
 ```env
-PORT=5000
+PORT=10000
 MONGO_URI=your_mongodb_connection_string
 STRIPE_SECRET_KEY=sk_test_... or sk_live_...
 CLOUDINARY_CLOUD_NAME=your_cloud_name
@@ -246,16 +246,3 @@ CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 ---
-
-## Rate Limiting
-
-Currently, no rate limiting is implemented. Consider adding rate limiting for production deployment.
-
-## Future Enhancements
-
-- [ ] Add user authentication for protected endpoints
-- [ ] Implement order management endpoints
-- [ ] Add product inventory tracking
-- [ ] Implement product search functionality
-- [ ] Add product reviews and ratings
-- [ ] Implement admin dashboard endpoints

@@ -82,38 +82,7 @@ The frontend is configured for deployment on Vercel with automatic deployments f
 
 The backend can be deployed to various platforms. Here are guides for popular options:
 
-### Option 1: Railway (Recommended)
-
-Railway offers easy deployment with automatic builds from GitHub.
-
-1. **Setup Railway**
-   - Go to [Railway](https://railway.app)
-   - Sign up/login with GitHub
-   - Create new project from GitHub repo
-   - Select your repository
-
-2. **Configure Build**
-   - Railway will auto-detect Node.js
-   - Root directory: `backend`
-   - Start command: `npm start`
-
-3. **Environment Variables**
-   Add these in Railway dashboard:
-   ```env
-   PORT=5000
-   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/weeknd-store
-   STRIPE_SECRET_KEY=sk_live_your_stripe_secret_key
-   CLOUDINARY_CLOUD_NAME=your_cloud_name
-   CLOUDINARY_API_KEY=your_api_key
-   CLOUDINARY_API_SECRET=your_api_secret
-   ```
-
-4. **Deploy**
-   - Push to main branch
-   - Railway will automatically deploy
-   - Note your deployment URL for frontend configuration
-
-### Option 2: Render
+### Render
 
 1. **Create Web Service**
    - Go to [Render](https://render.com)
@@ -122,7 +91,7 @@ Railway offers easy deployment with automatic builds from GitHub.
 
 2. **Configure Service**
    ```bash
-   Name: weeknd-store-backend
+   Name: the-xo-store
    Environment: Node
    Region: Choose closest to your users
    Branch: main
@@ -132,37 +101,20 @@ Railway offers easy deployment with automatic builds from GitHub.
    ```
 
 3. **Environment Variables**
-   Add the same environment variables as Railway
-
-### Option 3: Heroku
-
-1. **Install Heroku CLI**
-   ```bash
-   npm install -g heroku
+      ```env
+   PORT=5000
+   MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/weeknd-store
+   STRIPE_SECRET_KEY=sk_live_your_stripe_secret_key
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
    ```
-
-2. **Create Heroku App**
-   ```bash
-   cd backend
-   heroku login
-   heroku create weeknd-store-backend
-   ```
-
-3. **Configure Environment Variables**
-   ```bash
-   heroku config:set MONGO_URI=your_mongodb_uri
-   heroku config:set STRIPE_SECRET_KEY=your_stripe_secret_key
-   heroku config:set CLOUDINARY_CLOUD_NAME=your_cloud_name
-   heroku config:set CLOUDINARY_API_KEY=your_api_key
-   heroku config:set CLOUDINARY_API_SECRET=your_api_secret
-   ```
-
 4. **Deploy**
-   ```bash
-   git add .
-   git commit -m "Deploy to Heroku"
-   git push heroku main
-   ```
+   - Push to main branch
+   - Render will automatically deploy
+   - Note your deployment URL for frontend configuration
+
+  ```
 
 ---
 
