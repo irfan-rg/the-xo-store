@@ -148,7 +148,7 @@ function Products() {
             {/* Countdown Timer */}
             <div>
               <div className="text-bright-red text-3xl font-bold mb-2">
-                {Math.floor(countdown / 60)}:{(countdown % 60).toString().padStart(2, '0')}
+                {Math.floor(countdown / 60)}:{(countdown % 60).toString().padStart(1.5, '0')}
               </div>
               <p className="text-gray-400 text-sm">Server waking up...</p>
             </div>
