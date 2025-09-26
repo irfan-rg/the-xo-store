@@ -14,18 +14,13 @@ function Products() {
   const { addToCart, notification } = useCart();
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  // Scroll to top on page load and check if we've connected to Render before
+  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Check if we've successfully connected to Render before
-    const hasConnected = localStorage.getItem('renderConnected');
-    if (hasConnected === 'true') {
-      setIsFirstLoad(false);
-    }
   }, []);
   const [addingToCart, setAddingToCart] = useState(null); // Track which product is being added to cart
   const [countdown, setCountdown] = useState(90); // 90 second countdown for server wake up
-  const [isFirstLoad, setIsFirstLoad] = useState(true); // Track if this is first load (cold start)
+  const [isColdStart, setIsColdStart] = useState(false); // Track if this is a cold start based on response time
 
   useEffect(() => {
     fetchProducts();
@@ -47,25 +42,31 @@ function Products() {
     setCountdown(90); // Reset countdown when fetching starts
     const startTime = Date.now();
     
+    // Detect cold start: if loading takes more than 3 seconds, it's likely a cold start
+    const coldStartTimer = setTimeout(() => {
+      setIsColdStart(true);
+    }, 3000); // 3 seconds threshold
+    
     try {
       const response = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/products${selectedCategory !== 'all' ? `?category=${selectedCategory}` : ''}`);
       setProducts(response.data);
       setError(null);
-      // Mark as successfully connected after first successful fetch
-      if (isFirstLoad) {
-        setIsFirstLoad(false);
-        localStorage.setItem('renderConnected', 'true');
-      }
+      
+      // Clear the cold start timer since we got a response
+      clearTimeout(coldStartTimer);
+      
     } catch (err) {
       setError('Failed to fetch products. Please try again later.');
+      clearTimeout(coldStartTimer);
     }
     
-    // Ensure minimum 600 milliseconds loading time regardless of success/failure
+    // Ensure minimum 400 milliseconds loading time regardless of success/failure
     const elapsedTime = Date.now() - startTime;
     const remainingTime = Math.max(0, 400 - elapsedTime);
     
     setTimeout(() => {
       setLoading(false);
+      setIsColdStart(false); // Reset cold start flag
     }, remainingTime);
   };
 
@@ -129,8 +130,8 @@ function Products() {
 
   // Show loading spinner during auth state resolution or data fetching
   if (loading) {
-    // First time loading (cold start) - show countdown and explanation
-    if (isFirstLoad) {
+    // Cold start detected (slow response) - show countdown and explanation
+    if (isColdStart) {
       return (
         <div className="bg-soft-black min-h-screen p-8 relative flex flex-col items-center justify-center">
           {/* Main loading content - centered */}
