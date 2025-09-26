@@ -8,9 +8,6 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 
 ![The XO Store](https://res.cloudinary.com/deqe0oqer/image/upload/v1756387292/red-weeknd_elrseh.jpg)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://thexostore.vercel.app)
 
 </div>
@@ -18,7 +15,9 @@ A modern, full-stack e-commerce platform for The Weeknd's official merchandise, 
 ## 🚀 Live Production
 
 - **Frontend**: [https://thexostore.vercel.app](https://thexostore.vercel.app)
-- **Backend API**: Deployed on Render
+- **Backend API**: Deployed on Render (Free Tier)
+
+> **⏰ First Visit Note**: The backend is hosted on Render's free tier, which means the server "sleeps" after periods of inactivity. On your first visit or after 15+ minutes of no activity, the server needs 1-2 minutes to wake up. This is normal for free hosting and doesn't affect performance once active!
 
 ## ✨ Features
 
@@ -170,6 +169,11 @@ The frontend is configured for Vercel deployment with automatic builds from the 
 
 ### Backend
 Can be deployed to various platforms (Railway, Render, Heroku, etc.)
+
+**Current Setup**: Deployed on Render's free tier
+- ✅ **100% Free** - No monthly costs
+- ⏰ **Cold Starts** - 1-2 minute wake-up time after inactivity
+- 🔄 **Auto-Deploy** - Automatic deployments from GitHub
 
 For detailed deployment instructions, see [DEPLOYMENT.md](./docs/DEPLOYMENT.md)
 

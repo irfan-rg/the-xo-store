@@ -19,13 +19,26 @@ function Products() {
     window.scrollTo(0, 0);
   }, []);
   const [addingToCart, setAddingToCart] = useState(null); // Track which product is being added to cart
+  const [countdown, setCountdown] = useState(90); // 90 second countdown for server wake up
 
   useEffect(() => {
     fetchProducts();
   }, [selectedCategory]);
 
+  // Countdown timer for loading state
+  useEffect(() => {
+    let timer;
+    if (loading && countdown > 0) {
+      timer = setInterval(() => {
+        setCountdown(prev => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(timer);
+  }, [loading, countdown]);
+
   const fetchProducts = async () => {
     setLoading(true);
+    setCountdown(90); // Reset countdown when fetching starts
     const startTime = Date.now();
     
     try {
@@ -106,15 +119,36 @@ function Products() {
   // Show loading spinner during auth state resolution or data fetching
   if (loading) {
     return (
-      <div className="bg-soft-black min-h-screen p-8 flex flex-col items-center justify-center">
-        <LineSpinner
-          size="40"
-          stroke="3"
-          speed="1"
-          color="#FF2E2E"
-          className="mb-4"
-        />
-        <p className="text-off-white text-lg">Loading products...</p>
+      <div className="bg-soft-black min-h-screen p-8 relative flex flex-col items-center justify-center">
+        {/* Main loading content - centered */}
+        <div className="text-center">
+          <LineSpinner
+            size="40"
+            stroke="3"
+            speed="1"
+            color="#FF2E2E"
+            className="mb-4 mx-auto"
+          />
+          <p className="text-off-white text-lg mb-8">Getting Products Ready...</p>
+          
+          {/* Countdown Timer */}
+          <div>
+            <div className="text-bright-red text-3xl font-bold mb-2">
+              {Math.floor(countdown / 60)}:{(countdown % 60).toString().padStart(2, '0')}
+            </div>
+            <p className="text-gray-400 text-sm">Server waking up...</p>
+          </div>
+        </div>
+        
+        {/* Note box positioned at bottom */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 w-full max-w-lg px-4">
+          <div className="bg-element border border-gray-700 rounded-lg p-4 text-center">
+            <p className="text-gray-400 text-sm">
+              <span className="text-bright-red font-semibold">NOTE:</span> Our server is hosted on Render's free tier and needs to wake up from sleep. 
+              This typically takes 1-2 minutes on your first visit!
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
